@@ -59,7 +59,7 @@
 			@enderror
 			<div class="form-group">
 				@if(count($roles)>0)
-					<label for="exampleInputEmail1 ">  اختر قسم</label>
+					<label for="exampleInputEmail1 ">تحديد الصلاحية</label>
 					<select class="form-control" name="roles[]" multiple>
 						<option value=""> </option>
 						@foreach($roles as $role)

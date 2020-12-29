@@ -29,11 +29,9 @@
 			@enderror
 			<div class="form-group">
 				<label for="exampleInputEmail1 "> التفاصيل </label>
-{{--				<textarea class="form-control text-right @error('details') is-invalid @enderror " id="details" name="details" value="{{old('details')}}">--}}
-
-{{--				</textarea>--}}
+				<textarea class="form-control text-right @error('details') is-invalid @enderror " id="details" name="details" value="{{old('details')}}"></textarea>
 {{--				<input type="text" name="details" hidden >--}}
-				@trix(\App\Models\Post::class, 'details')
+{{--				@trix(\App\Models\Post::class, 'details')--}}
 
 			</div>
 			@error('name')
@@ -69,8 +67,18 @@
 {{--	<script>--}}
 {{--		tinymce.init({--}}
 {{--			selector: '#details',--}}
-{{--			plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments tinymcespellchecker',--}}
-{{--			toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',--}}
+{{--			plugins: 'image a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments tinymcespellchecker',--}}
+{{--			// toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',--}}
 {{--		});--}}
 {{--	</script>--}}
+	<script>
+		// $('#lfm').filemanager('image', {prefix: route_prefix});
+		var options = {
+			filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+			filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+			filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+			filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+		};
+		CKEDITOR.replace('details', options);
+	</script>
 	@stop

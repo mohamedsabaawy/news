@@ -17,6 +17,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware(['permission:post show'])->only('index' , 'show');
+        $this->middleware(['permission:post edit'])->only('edit' , 'update');
+        $this->middleware(['permission:post create'])->only('create' , 'store');
+        $this->middleware(['permission:post delete'])->only('destroy');
+    }
+
+
     public function index()
     {
         $categories = Auth::user()->categories;
@@ -60,13 +70,20 @@ class PostController extends Controller
 //        return $request;
 //        Post::create(request()->all());
 
-        $category = Post::create([
+        $post = Post::create([
             'title' => $request->title,
-            'post-trixFields' => request('post-trixFields'),
-            'attachment-post-trixFields' => request('attachment-post-trixFields'),
+            'details' => $request->details,
+            'cover' => $request->cover->store('images','public'),
+//            'post-trixFields' => request('post-trixFields'),
+//            'attachment-post-trixFields' => request('attachment-post-trixFields'),
             'category_id' => $request->category_id,
-//            'cover' => $request->cover->store('images','public'),
         ]);
+//        if (!empty($request->cover)){
+//            $post->cover = $request->cover->store('images','public');
+//            $post->save();
+//        }else{
+//            $post->cover = ' ';
+//        }
 //        activity()
 //            ->causedBy(Auth::user()->id)
 //            ->performedOn($category)
@@ -130,8 +147,6 @@ class PostController extends Controller
 //        return $post->trixAttachments;
         Storage::disk('public')->delete($post->trixAttachments);
         Storage::disk('public')->delete($post->cover);
-        $post->trixRichText()->delete();
-//        $post->trixAttachments->delete();
         $post->delete();
         return redirect()->back();
     }

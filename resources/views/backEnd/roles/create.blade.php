@@ -18,11 +18,12 @@
 					<strong>{{ $message }}</strong>
 				</span>
             @enderror
-            <div class="form-group">
+            <div class="form-group ">
                 <label for="exampleInputEmail1 "> الصلاحيات </label>
-                <div class="col-3 text-right">
+                <div class="">
                     @foreach($perm as $permission)
-                        <input type="checkbox" value="{{$permission->id}}" name="permission[]">{{$permission->name}}
+                        <span class="badge btn-primary"><input type="checkbox" value="{{$permission->id}}" name="permission[]">{{$permission->name}}</span>
+
                     @endforeach
                 </div>
             </div>

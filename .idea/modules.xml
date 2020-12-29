@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://D:/xampp/htdocs/ali/.idea/ali.iml" filepath="D:/xampp/htdocs/ali/.idea/ali.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/news.iml" filepath="$PROJECT_DIR$/.idea/news.iml" />
     </modules>
   </component>

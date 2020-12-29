@@ -1,4 +1,3 @@
-{{--@inject('notifications','App\Models\Notification')--}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -240,6 +239,8 @@
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('tiny/tinymce.min.js')}}"></script>
 @yield('script')
 </body>
 </html>

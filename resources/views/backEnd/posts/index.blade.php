@@ -50,8 +50,9 @@
                         <td class="text-center" width="20px">
                             <img width="60px" src="{{asset('storage/'.$row->cover)}}">
                         </td>
-                        <td class="text-center" width="20px">{{$row->title}}</td>
-                        <td class="text-center width" width="20px" >@trix($row, 'details')</td>
+                        <td class="text-center" width="20px">{{substr($row->title , 0 , 13)}}{{strlen($row->title) > 10 ? '....' : ''}}</td>
+{{--                        <td class="text-center width" width="20px" >@trix($row, 'details')</td>--}}
+                        <td class="text-center width" width="20px" >{{substr(strip_tags($row->details),0,50)}}{{strlen($row->details) > 10 ? '....' : ''}}</td>
                         @can('post edit')
                         <td class="text-center">
                                 <a href="{{url(route('post.edit',$row->id))}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
